@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using AspNetWorkshopProject.Models;
+using AspNetWorkshopProject.Models.ViewModels;
 
 namespace AspNetWorkshopProject.Controllers
 {
@@ -20,7 +20,7 @@ namespace AspNetWorkshopProject.Controllers
             ViewData["Message"] = "Your application description page.";
             ViewData["Email"] = "rodrigo.muniz.dev@gmail.com";
 
-            return View();
+            return View("Privacy");
         }
 
         public IActionResult Contact()
@@ -30,9 +30,9 @@ namespace AspNetWorkshopProject.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public JsonResult Privacy()
         {
-            return View();
+            return Json(Newtonsoft.Json.JsonConvert.SerializeObject(new { Nome = "Rodrigo"}));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
